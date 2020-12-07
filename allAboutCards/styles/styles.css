@@ -1,0 +1,21 @@
+body{
+    font-family: 'Lato', sans-serif;
+}
+.title{
+    font-family: 'Patrick Hand', cursive;
+    background-image: url("..//assets/Header-Background.jpg");
+}
+
+
+.list-group-item{
+    background-image: url("..//assets/Content-Background.jpg");
+}
+
+
+/*
+font-family: 'Lato', sans-serif;
+font-family: 'Lobster', cursive;
+font-family: 'Patrick Hand', cursive;
+font-family: 'Roboto', sans-serif;
+
+*/

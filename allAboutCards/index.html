@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato&family=Lobster&family=Patrick+Hand&family=Roboto&display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Merriweather:ital@1&family=Roboto&family=Ruda:wght@600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="styles/styles.css">
+</head>
+
+<body>
+    <div class="wrapper">
+
+        <div class="d-flex justify-content-center text-white text-align:center p-ms-5 p-md-3 title ">
+            <h1>
+                Knights of the Frozen Throne
+                <small class="text-muted"> Card Set</small>
+            </h1>
+        </div>
+
+        <!-- Contains search fields -->
+        <div class="container mt-4 " id="containerTop"  hidden >
+            <div class="row">
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="search">Search by name:</label>
+                        <form class="form">
+                            <input class="form-control" type="search" id="search-name" placeholder="Name" aria-label="Search">
+                
+                        </form>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="card-class-filter">Filter by class:</label>
+                        <select class="form-control" id="card-class-filter">
+                            <option selected disabled hidden value='' id="empty-class-option"></option>
+                            <option value="neutral">Neutral</option>
+                            <option value="priest">Priest</option>
+                            <option value="rogue">Rogue</option>
+                            <option value="paladin">Paladin</option>
+                            <option value="death knight">Death Knight</option>
+                            <option value="hunter">Hunter</option>
+                            <option value="warrior">Warrior</option>
+                            <option value="warlock">Warlock</option>
+                            <option value="mage">Mage</option>
+                            <option value="shaman">Shaman</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="card-type-filter">Filter by type:</label>
+                        <select class="form-control" id="card-type-filter">
+                            <option selected disabled hidden value=''></option>
+                            <option value="minion">Minion</option>
+                            <option value="hero">Hero</option>
+                            <option value="hero power">Hero Power</option>
+                            <option value="spell">Spell</option>
+                            <option value="enchantment">Enchantment</option>
+                            <option value="Weapon">Weapon</option>
+                        </select>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Second row of filters-->
+            <div class="row">
+            
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="card-race-filter">Filter by race:</label>
+                        <select class="form-control" id="card-race-filter">
+                            <option selected disabled hidden value=''></option>
+                            <option value="beast">Beast</option>
+                            <option value="murloc">Murloc</option>
+                            <option value="elemental">Elemental</option>
+                            <option value="demon">Demon</option>
+                            <option value="mech">Mech</option>
+                            <option value="pirate">Pirate</option>
+                            <option value="dragon">Dragon</option>
+                        </select>
+                    </div>
+                </div>
+            
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="card-raritty-filter">Select rarity:</label>
+                        <div class="form-group" id="card-raritty-filter">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="rarityOptions" id="common" value="common">
+                                <label class="form-check-label" for="common">Common</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="rarityOptions" id="rare" value="rare">
+                                <label class="form-check-label" for="rare">Rare</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="rarityOptions" id="epic" value="epic">
+                                <label class="form-check-label" for="epic">Epic</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="rarityOptions" id="legendary" value="legendary">
+                                <label class="form-check-label" for="legendary">Legendary</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Buttons changing layout view -->
+            <div class="d-flex flex-row justify-content-end m-3">
+                <div class="ml-sm-1 ml-md-3">
+                    <button type="button" class="btn btn-outline-dark" alt="View All Cards" id="getAll">View All Cards</button>
+                </div>
+
+                <div class="ml-sm-1 ml-md-3">
+                    <button type="button" class="btn btn-outline-dark" alt="View cards in list" id="listView"><i
+                            class="fas fa-bars"></i></button>
+                </div>
+
+                <div class="ml-sm-1 ml-md-3">
+                    <button type="button" class="btn btn-outline-dark" alt="View cards in grid" id="gridView"><i class="fa fa-th-large"
+                            aria-hidden="true"></i></button>
+                </div>
+            </div>
+        </div>
+
+        <!-- container for all the cards -->
+        <div class="container cards-container">
+            <ul class="list-group-cards justify-content-center pl-0" id="card-list">
+
+            </ul>
+        </div>
+
+    </div>
+
+    <li class="mt-sm-1 m-sm-1 mt-lg-3 mr-0 ml-0 list-group-item" style="display: none;" id="cloneCard">
+        <div class="row  p-sm-2 p-lg-2 item-container">
+            <div class="col-sm-4 col-lg-4 card-image-container d-flex justify-content-center">
+                <img src="assets/Empty_image.jpg" class="img-fluid img-responsive cardImage thumbnail w-75">
+            </div>
+
+            <div class="col-sm-8 col-lg-8 card-info-container">
+                <div class="mb-ms-3 ml-ms-0">
+                    <h3 class="cardName text-left">Unknown</h3>
+                </div>
+                <div class="text-wrap ">
+                    <h6 class="attributes artistName text-left">Artist: <span class="artist">Unknown</span></h6>
+                </div>
+
+                <div class="row mt-lg-1 mt-lg-2 card-details-container ">
+
+                    <div class="col-6">
+                        <h6 class="attributes">Class: <span class="playerClass">Unknown</span></h6>
+                        <h6 class="attributes">Type: <span class="cardType">Unknown</span></h6>
+                        <h6 class="attributes">Race: <span class="race">Unknown</span></h6>
+                        <h6 class="attributes">Rarity: <span class="rarity">Unknown</span></h6>
+                    </div>
+
+                    <div class="col-6">
+                        <div class="d-flex flex-row align-items-baseline cardAttributes">
+                            <h6>Cost: <span class="cost">None</span></h6>
+                            <div class="ml-2">
+                                <img src="assets/Mana_icon.png" class="attributeImage ">
+                            </div>
+                        </div>
+
+                        <div class="d-flex flex-row align-items-baseline cardAttributes">
+                            <h6>Health: <span class="health">None</span></h6>
+                            <div class="ml-2">
+                                <img src="assets/Health_icon.png" class="attributeImage ">
+                            </div>
+                        </div>
+
+                        <div class="d-flex flex-row align-items-baseline cardAttributes">
+                            <h6>Attack: <span class="attack">None</span></h6>
+                            <div class="ml-2">
+                                <img src="assets/Attack_icon.png" class="attributeImage ">
+                            </div>
+                        </div>
+
+                        <div class="d-flex flex-row align-items-baseline cardAttributes">
+                            <h6>Armor: <span class="armor">None</span></h6>
+                            <div class="ml-2">
+                                <img src="assets/Armor_icon.png" class="attributeImage ">
+                            </div>
+                        </div>
+
+                        <div class="d-flex flex-row align-items-baseline cardAttributes">
+                            <h6>Durability: <span class="durability">None</span></h6>
+                            <div class="ml-2">
+                                <img src="assets/Weapon-durability.png" class="attributeImage ">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="m-sm-1 m-lg-2  text-wrap">
+                    <p class="flavor font-italic"></p>
+                </div>
+            </div>
+        </div>
+    </li>
+
+
+
+
+
+    <script type="text/javascript" src="js/javascript.js"></script>
+
+
+</body>
+
+</html>
